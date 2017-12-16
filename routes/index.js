@@ -1,5 +1,5 @@
 var express = require('express');
-var errorHandler = require('./handlers/errorHandler');
+var errorHandler = require('../handlers/errorHandlers');
 var router = express.Router();
 
 /* GET home page. */
