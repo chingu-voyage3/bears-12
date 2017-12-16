@@ -13,6 +13,18 @@ class NavContainer extends Component {
         {
           href: '/',
           title: 'Home',
+        },
+        {
+          href: '/login',
+          title: 'Login'
+        },
+        {
+          href: '/join',
+          title: 'Join'
+        },
+        {
+          href: '/search',
+          title: 'Search'
         }
       ],
       menu: 'Menu',
