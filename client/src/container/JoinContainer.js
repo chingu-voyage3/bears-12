@@ -6,7 +6,9 @@ import React, { Component } from 'react';
 export class SignUpContainer extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>Sign Up: Coming Soon!</div>
+      <div>
+        
+      </div>
     );
   }
 }
