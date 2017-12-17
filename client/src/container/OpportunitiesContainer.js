@@ -8,11 +8,12 @@ import moment from 'moment';
 export class OpportunitesContainer extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     const mockData = [{
-      image: 'sample.png',
+      image: '',
       title: 'Lorem Ipsum',
-      description: 'This is a description',
+      description: 'This is a description. This describes what the event is, and who is hosting it and other good stuff that people need to know',
       startDate: '12/31/2017',
-      location: 'Columbus, Ohio'
+      location: 'Columbus, Ohio',
+      nonProfit: 'Hotdog Fingers Society'
     }];
 
     return (

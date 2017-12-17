@@ -2,7 +2,6 @@
   "name": "projectEisenhower",
   "version": "0.1.0",
   "private": true,
-  "proxy": 9001,
   "devDependencies": {
     "react-scripts": "1.0.17"
   },
