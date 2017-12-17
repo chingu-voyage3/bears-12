@@ -25,6 +25,10 @@ class NavContainer extends Component {
         {
           href: '/search',
           title: 'Search'
+        },
+        {
+          href: '/messages',
+          title: 'Messages'
         }
       ],
       menu: 'Menu',

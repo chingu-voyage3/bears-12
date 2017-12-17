@@ -2,21 +2,23 @@
   "name": "projectEisenhower",
   "version": "0.1.0",
   "private": true,
+  "proxy": 9001,
   "devDependencies": {
     "react-scripts": "1.0.17"
   },
   "dependencies": {
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1",
-    "react-router": "^4.2.0",
-    "react-helmet": "^5.2.0",
-    "react-redux": "^5.0.6",
-    "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
     "axios": "^0.16.2",
     "font-awesome": "^4.7.0",
-    "immutable": "^3.8.1"
+    "immutable": "^3.8.1",
+    "moment": "^2.19.4",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-helmet": "^5.2.0",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -5,6 +5,7 @@ import HomeContainer from '../container/HomeContainer';
 import LoginContainer from '../container/LoginContainer';
 import JoinContainer from '../container/JoinContainer';
 import SearchContainer from '../container/SearchContainer';
+import MessagesContainer from '../container/MessagesContainer';
 
 const getRoutes = (store) => (
   <Router>
@@ -14,6 +15,7 @@ const getRoutes = (store) => (
         <Route exact={true} path='/login' component={LoginContainer} />
         <Route exact={true} path='/join' component={JoinContainer} />
         <Route exact={true} path='/search' component={SearchContainer} />
+        <Route exact={true} path='/messages' component={MessagesContainer} />
         <Route render={() => <Redirect to='/' />} />
       </Switch>
     </App>
