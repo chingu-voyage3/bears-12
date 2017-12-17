@@ -2,9 +2,30 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Opportunity = (props) => {
-  return (
-    <div>Opportunity View</div>
-  )
+    const mockData = {
+      title: 'Lorm Ipsum',
+      nonProfit: 'Hotdog Fingers Society',
+      startDate: '12/30/17 12:00:00 AM',
+      endDate: '12/31/2017 12:00:00 AM',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A quod, officia expedita aliquid vero dolorum, veritatis perferendis illum esse dicta nulla aspernatur earum itaque dolorem id distinctio, voluptatibus voluptatem nesciunt!',
+      location: {
+        lat: 0,
+        long: 0
+      },
+      requiredSkills: ['cash handling', 'communication', 'juggling']
+    }
+    return (
+      <div>
+        <h1>{mockData.title}</h1>
+        <div>
+          <ul>
+            <li>{mockData.startDate}</li>
+            <li>{mockData.endDate}</li>
+          </ul>
+          <button>Interested</button>
+        </div>
+      </div>
+    );
 }
 
 export default Opportunity

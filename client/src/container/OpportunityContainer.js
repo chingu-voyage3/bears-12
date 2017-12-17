@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Opportunity from '../components/Opportunity';
 
 /**
  * OpportunityContainer
@@ -6,13 +7,13 @@ import React, { Component } from 'react';
 export class OpportunityContainer extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>Opportunity: Coming Soon!</div>
-    );
+      <Opportunity />
+    )
   }
 }
 
-OpportunityContainer.propTypes = {
-  prop: PropTypes.type.isRequired
-}
+// OpportunityContainer.propTypes = {
+//   prop: PropTypes.type.isRequired
+// }
 
 export default OpportunityContainer;
