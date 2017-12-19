@@ -6,7 +6,7 @@ const Opportunity = (props) => {
     const mockData = {
       title: 'Lorm Ipsum',
       nonProfit: 'Hotdog Fingers Society',
-      startDate: '12/30/17 12:00:00 AM',
+      startDate: '12/30/2017 12:00:00 AM',
       endDate: '12/31/2017 12:00:00 AM',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A quod, officia expedita aliquid vero dolorum, veritatis perferendis illum esse dicta nulla aspernatur earum itaque dolorem id distinctio, voluptatibus voluptatem nesciunt!',
       location: {

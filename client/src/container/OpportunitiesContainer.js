@@ -13,7 +13,8 @@ export class OpportunitesContainer extends Component { // eslint-disable-line re
       description: 'This is a description. This describes what the event is, and who is hosting it and other good stuff that people need to know',
       startDate: '12/31/2017',
       location: 'Columbus, Ohio',
-      nonProfit: 'Hotdog Fingers Society'
+      nonProfit: 'Hotdog Fingers Society',
+      id: 1
     }];
 
     return (

@@ -13,7 +13,7 @@ export class SearchContainer extends Component { // eslint-disable-line react/pr
           <input type="text"/>
           <button type="submit">Search</button>
         </form>
-        <Matches /    >
+        <Matches />
       <OpportunitiesContainer />
 
       </div>
