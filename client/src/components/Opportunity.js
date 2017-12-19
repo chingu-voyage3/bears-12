@@ -4,6 +4,7 @@ import Example from '../img/download.jpeg'
 
 const Opportunity = (props) => {
     const mockData = {
+      opportunityId: 1,
       title: 'Lorm Ipsum',
       nonProfit: 'Hotdog Fingers Society',
       startDate: '12/30/2017 12:00:00 AM',

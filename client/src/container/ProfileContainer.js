@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import Profile from "../components/Profile.js";
 
 /**
  * ProfileContainer
  */
 export class ProfileContainer extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const mockData = {
+    const mockData = [{
       name: 'Hotdog Fingers Society',
       userType: 'Non-Profit',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A quod, officia expedita aliquid vero dolorum, veritatis perferendis illum esse dicta nulla aspernatur earum itaque dolorem id distinctio, voluptatibus voluptatem nesciunt!',
@@ -15,10 +16,14 @@ export class ProfileContainer extends Component { // eslint-disable-line react/p
         long: 0
       },
       userid: 1
-    }
+    }];
     return (
       <div>
-        blah
+        {
+          mockData.map((data, idx) => {
+            return <Profile key={idx} data={data} />
+          })
+        }
       </div>
     );
   }
