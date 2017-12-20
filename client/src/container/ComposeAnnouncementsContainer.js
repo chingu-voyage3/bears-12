@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 export class ComposeAnnouncementsContainer extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>MY COMPONENT</div>
+      <div>Announcement Container goes here</div>
     );
   }
 }

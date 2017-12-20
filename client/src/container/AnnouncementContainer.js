@@ -8,7 +8,12 @@ import ComposeAnnouncementsContainer from './ComposeAnnouncementsContainer'
 export class AnnouncementContainer extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>Messages: Coming Soon!</div>
+      <div>
+        <h3>Previous Announcements</h3>
+        <ReadAnnouncementsContainer/>
+        <h3>Compose New Announcement</h3>
+        <ComposeAnnouncementsContainer/>
+      </div>
     );
   }
 }

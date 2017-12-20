@@ -8,6 +8,7 @@ import SearchContainer from '../container/SearchContainer';
 import AnnouncementContainer from '../container/AnnouncementContainer';
 import OpportunityContainer from '../components/Opportunity';
 import ProfileContainer from '../container/ProfileContainer';
+import MyOpportunitiesContainer from '../container/MyOpportunitiesContainer';
 
 const getRoutes = (store) => (
   <Router>
@@ -18,7 +19,9 @@ const getRoutes = (store) => (
         <Route exact={true} path='/join' component={JoinContainer} />
         <Route exact={true} path='/search' component={SearchContainer} />
         <Route exact={true} path='/profile/:userid' component={ProfileContainer} />
-        <Route exact={true} path='/opportunity/:opportunityid' component={OpportunityContainer}></Route>
+        <Route exact={true} path='/opportunity/:opportunityid' component={OpportunityContainer}/>
+        <Route path='/announcement' component={AnnouncementContainer}/>
+        <Route path='/MyOpportunities' component={MyOpportunitiesContainer}/>
         <Route render={() => <Redirect to='/' />} />
       </Switch>
     </App>
