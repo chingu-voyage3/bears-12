@@ -8,6 +8,7 @@ import moment from 'moment';
 export class OpportunitesContainer extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     const mockData = [{
+      userid: 'hotdogFings',
       image: '',
       title: 'Lorem Ipsum',
       description: 'This is a description. This describes what the event is, and who is hosting it and other good stuff that people need to know',

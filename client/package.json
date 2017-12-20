@@ -2,14 +2,17 @@
   "name": "projectEisenhower",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "devDependencies": {
     "react-scripts": "1.0.17"
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "concurrently": "^3.5.1",
     "font-awesome": "^4.7.0",
     "immutable": "^3.8.1",
     "moment": "^2.19.4",
+    "nodemon": "^1.13.3",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-helmet": "^5.2.0",
