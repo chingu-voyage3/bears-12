@@ -41,7 +41,7 @@ const Opportunity = (props) => {
           <h2>Desired Skills Needed</h2>
           <ul>
             {mockData.requiredSkills.map((skill, idx) => {
-              return <li>{skill}</li>
+              return <li key={idx}>{skill}</li>
             })}
           </ul>
         </div>
