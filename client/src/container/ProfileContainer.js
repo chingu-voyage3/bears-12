@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Profile from "../components/Profile.js";
+import CalendarContainer from "../container/CalendarContainer.js";
 
 /**
  * ProfileContainer
@@ -24,6 +25,7 @@ export class ProfileContainer extends Component { // eslint-disable-line react/p
             return <Profile key={idx} data={data} />
           })
         }
+        <CalendarContainer/>
       </div>
     );
   }
