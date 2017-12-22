@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReadAnnouncementsContainer from './ViewAnnouncementsContainer'
+import ViewAnnouncementsContainer from './ViewAnnouncementsContainer'
 import ComposeAnnouncementsContainer from './ComposeAnnouncementsContainer'
 
 /**
@@ -10,7 +10,7 @@ export class AnnouncementContainer extends Component { // eslint-disable-line re
     return (
       <div>
         <h3>Previous Announcements</h3>
-        <ReadAnnouncementsContainer/>
+        <ViewAnnouncementsContainer/>
         <h3>Compose New Announcement</h3>
         <ComposeAnnouncementsContainer/>
       </div>

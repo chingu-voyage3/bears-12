@@ -12,9 +12,9 @@ export class CalendarContainer extends Component { // eslint-disable-line react/
   state = {
     date: new Date(),
   }
- 
+
   onChange = date => this.setState({ date });
-  
+
   render() {
     const styleDiv = {
         display: 'flex',
@@ -22,7 +22,9 @@ export class CalendarContainer extends Component { // eslint-disable-line react/
         justifyContent: 'center',
         alignItems: 'center'
     };
-      
+
+    console.log(this.state.date);
+
     return (
       <div style={styleDiv}>
         <h3>Calender of Events</h3>
