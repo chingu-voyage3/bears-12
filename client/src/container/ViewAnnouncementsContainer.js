@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AnnouncementCard from '../components/AnnouncementCard'
+import AnnouncementCard from '../components/AnnouncementCard';
 
 /**
  * ReadMessagesContainer
