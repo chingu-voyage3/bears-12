@@ -66,7 +66,7 @@ export class MyOpportunitiesContainer extends Component { // eslint-disable-line
         <div style={buttonContainerStyle}>
           <div style={buttonStyle} onClick={() => this.setMyOppsVis()}>My Current Opportunities</div>
           <div style={buttonStyle} onClick={() => this.setExpOppsVis()}>Expired Opportunities</div>
-          <div style={buttonStyle} onClick={() => this.setCompOppsVis()}>New Opportunity</div>
+          <div style={buttonStyle} onClick={() => this.setCompOppsVis()}>Compose Opportunity</div>
         </div>
         <div>
           {this.state.myOpportunitiesIsVisible && <OpportunitiesContainer/>}

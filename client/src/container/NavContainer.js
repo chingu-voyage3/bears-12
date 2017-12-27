@@ -72,10 +72,6 @@ class NavContainer extends Component {
         title: 'MyOpportunities'
       },
       {
-        href: '/editopportunity/edit',
-        title: 'Compose Opportunity'
-      },
-      {
         href: '/search',
         title: 'Search'
       }

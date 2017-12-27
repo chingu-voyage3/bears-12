@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import OAuth from '../components/OAuth.js';
 
 /**
  * LoginContainer
@@ -27,6 +28,9 @@ export class LoginContainer extends Component { // eslint-disable-line react/pre
               <div style={buttonOutline}>
                 <span>Login with Twitter</span>
               </div>
+            </li>
+            <li>
+                <OAuth/>
             </li>
           </ul>
         </div>
