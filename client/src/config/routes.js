@@ -9,19 +9,21 @@ import AnnouncementContainer from '../container/AnnouncementContainer';
 import OpportunityContainer from '../components/Opportunity';
 import ProfileContainer from '../container/ProfileContainer';
 import MyOpportunitiesContainer from '../container/MyOpportunitiesContainer';
+import ComposeOpportunitiesContainer from '../container/ComposeOpportunitiesContainer';
 
 const getRoutes = (store) => (
   <Router>
     <App>
       <Switch>
         <Route exact={true} path='/' component={HomeContainer} />
-        <Route exact={true} path='/login' component={LoginContainer} />
-        <Route exact={true} path='/join' component={JoinContainer} />
-        <Route exact={true} path='/search' component={SearchContainer} />
-        <Route exact={true} path='/profile/:userid' component={ProfileContainer} />
+        <Route path='/login' component={LoginContainer} />
+        <Route path='/join' component={JoinContainer} />
+        <Route path='/search' component={SearchContainer} />
+        <Route path='/profile/:userid' component={ProfileContainer} />
         <Route exact={true} path='/opportunity/:opportunityid' component={OpportunityContainer}/>
-        <Route path='/announcement' component={AnnouncementContainer}/>
-        <Route path='/MyOpportunities' component={MyOpportunitiesContainer}/>
+        <Route exact={true} path='/editopportunity/:opportunityid' component={ComposeOpportunitiesContainer} />
+        <Route path='/announcement' component={AnnouncementContainer} />
+        <Route path='/myopportunities' component={MyOpportunitiesContainer}/>
         <Route render={() => <Redirect to='/' />} />
       </Switch>
     </App>

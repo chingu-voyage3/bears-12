@@ -64,12 +64,16 @@ class NavContainer extends Component {
         title: 'Profile'
       },
       {
-        href: '/Announcement',
+        href: '/announcement',
         title: 'Announcement'
       },
       {
-        href: '/MyOpportunities',
+        href: '/myopportunities',
         title: 'MyOpportunities'
+      },
+      {
+        href: '/editopportunity/edit',
+        title: 'Compose Opportunity'
       },
       {
         href: '/search',
