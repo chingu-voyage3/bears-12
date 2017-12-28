@@ -8,36 +8,68 @@ export class OAuth extends Component {
       this.state = {
           thumbnail: null,
           name: null,
-          loggedIn: false
+          loggedIn: false,
+          askForLogin: true
       }
+      
+      const GOOGLE_CLIENT_ID = OAuthKeys.google.ClientID
+      
+      hello.init({
+          google: GOOGLE_CLIENT_ID
+      },{
+          display: 'popup',
+          scope: 'basic',
+          force: false
+      });
+      
+      const google = hello.use('google');
+      
+      let that = this;
+      google.api("me").then(function(r){
+        console.log("Successful login: ", r);
+        that.setState({
+            askForLogin: false,
+            thumbnail: r.thumbnail,
+            name: r.name,
+            loggedIn: true
+        });
+      }, function(e) {
+        console.log("Not successful yet");
+        that.setState({askForLogin: true});
+      });
+  }
+    
+  componentDidMount () {
+  }
+    
+  loginGoog () {
+      console.log("Button Pressed");
+      let that = this;
+      hello.login('google');
   }
 
-  GOOGLE_CLIENT_ID = OAuthKeys.Google.ClientID
-
-  /*hello.on('auth.login', function (auth) {
-
-      // add a greeting and access the thumbnail and name from
-      // the authorized response
-
-      hello(auth.network).api('/me').;
-    });
-
-    // remove the greeting when we log out
-
-    hello.on('auth.logout', function () {
-      var lab = document.getElementById("pic_and_greet");
-      if (lab != null) document.body.removeChild( lab );
-    });*/
+  logoutGoog () {
+      console.log("Button Pressed");
+      let that = this;
+      hello.logout('google').then(() => {
+          that.setState({
+            thumbnail: null,
+            name: null,
+            loggedIn: false
+          });
+          console.log("Logged out");
+      });
+  }
     
   render() {
     return(
       <div>
-        {!this.state.loggedIn && <button onClick="hello('google').login()">G+</button>}
-        {this.state.loggedIn && <button onClick="hello('google').logout()">logout</button>}
-        {this.state.loggedIn && <div id="pic_and_greet">
+        {!this.state.loggedIn ? <button onClick={this.loginGoog}>G+</button> : <div></div>}
+        {this.state.loggedIn ? <button onClick={this.logoutGoog}>logout</button> : <div></div>}
+        {this.state.loggedIn ? <div id="pic_and_greet">
             <img src={this.state.thumbnail}/>
             {"Hey " + this.state.name}
-        </div>}
+        </div> : <div></div>}
       </div>
     );
   }
