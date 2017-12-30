@@ -3,6 +3,8 @@
 # dependencies
 /node_modules
 
+OAuthKeys.js
+
 # testing
 /coverage
 

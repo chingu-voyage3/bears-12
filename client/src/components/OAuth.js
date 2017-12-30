@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import hello from 'hellojs/dist/hello.all.js';
-import OAuthKeys from '../OAuthKeys.js';
+import OAuthKeys from '../config/OAuthKeys.js';
 
 export class OAuth extends Component {
   constructor () {
@@ -11,8 +11,8 @@ export class OAuth extends Component {
           loggedIn: false,
           askForLogin: true
       }
-      
-      const GOOGLE_CLIENT_ID = OAuthKeys.google.ClientID
+      console.log(OAuthKeys);
+      const GOOGLE_CLIENT_ID = OAuthKeys.Google.ClientID
       
       hello.init({
           google: GOOGLE_CLIENT_ID
@@ -37,9 +37,6 @@ export class OAuth extends Component {
         console.log("Not successful yet");
         that.setState({askForLogin: true});
       });
-  }
-    
-  componentDidMount () {
   }
     
   loginGoog () {
