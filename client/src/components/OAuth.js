@@ -8,8 +8,7 @@ export class OAuth extends Component {
       this.state = {
           thumbnail: null,
           name: null,
-          loggedIn: false,
-          askForLogin: true
+          loggedIn: false
       }
       console.log(OAuthKeys);
       const GOOGLE_CLIENT_ID = OAuthKeys.Google.ClientID
@@ -23,23 +22,33 @@ export class OAuth extends Component {
       });
       
       const google = hello.use('google');
-      
       let that = this;
-      google.api("me").then(function(r){
-        console.log("Successful login: ", r);
+      
+      hello.on('auth.login', function(auth){
+        google.api("me").then(function(r){
+            console.log("Successful login: ", r);
+            that.setState({
+                thumbnail: r.thumbnail,
+                name: r.name,
+                loggedIn: true
+            });
+        }, function(e) {
+            console.log("Not successful yet");
+            that.setState({askForLogin: true});
+        }); 
+      });
+      
+      hello.on('auth.logout', function() {
         that.setState({
-            askForLogin: false,
-            thumbnail: r.thumbnail,
-            name: r.name,
-            loggedIn: true
-        });
-      }, function(e) {
-        console.log("Not successful yet");
-        that.setState({askForLogin: true});
+            thumbnail: null,
+            name: null,
+            loggedIn: false
+        })
       });
   }
     
   loginGoog () {
+      const google = hello.use('google');
       console.log("Button Pressed");
       let that = this;
       hello.login('google');
@@ -48,14 +57,7 @@ export class OAuth extends Component {
   logoutGoog () {
       console.log("Button Pressed");
       let that = this;
-      hello.logout('google').then(() => {
-          that.setState({
-            thumbnail: null,
-            name: null,
-            loggedIn: false
-          });
-          console.log("Logged out");
-      });
+      hello.logout('google');
   }
     
   render() {

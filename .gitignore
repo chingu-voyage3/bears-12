@@ -30,4 +30,4 @@ node_modules
 npm-debug.log
 
 #Sensitive Environment Variables
-client/src/OAuthKeys.js
+client/src/config/OAuthKeys.js
