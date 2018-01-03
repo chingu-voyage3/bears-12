@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import OpCard from '../components/OpportunityCard';
-import moment from 'moment';
+//import moment from 'moment'; Commented to remove extraneous error messages
 
 /**
  * OpportunitesContainer

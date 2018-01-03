@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Example from '../img/download.jpeg'
+import React from 'react';
+//import PropTypes from 'prop-types'; Uncomment when needed
+import Example from '../img/download.jpeg';
 import { Link } from 'react-router-dom';
 
 const Opportunity = (props) => {

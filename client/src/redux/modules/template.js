@@ -10,6 +10,7 @@ export const updateHeroWaypoint = (waypoint) => ({
   waypoint,
 })
 
+/* Commented 1/2/2018 to remove error message "no-unused-vars"
 const fetchingHero = () => ({
   type: FETCHING_HERO,
 })
@@ -26,6 +27,7 @@ const fetchingHeroSuccess = ({ title, ctaLink, body, footer }) => ({
   body,
   footer,
 })
+*/
 
 // export const fetchAndHandleHero = () => (
 //   (dispatch) => {

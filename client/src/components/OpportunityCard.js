@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+//import PropTypes from 'prop-types'; Commented to remove extraneous error messages
 import { Link } from 'react-router-dom';
-import image from '../img/download.jpeg'
+import image from '../img/download.jpeg';
 
 const OpportunityCard = (props) => {
   return (

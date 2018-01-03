@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom'
+/* import PropTypes from 'prop-types' Commented out until needed, to remove error messages
+import { withRouter } from 'react-router-dom' */
 
 import Navigation from '../components/Navigation'
 

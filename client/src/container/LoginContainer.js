@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 /**
  * LoginContainer
@@ -31,7 +32,7 @@ export class LoginContainer extends Component { // eslint-disable-line react/pre
           </ul>
         </div>
         <div>
-          <a href="#">Sign up here!</a>
+          <Link to="/signup">Sign up here!</Link>
         </div>
       </div>
     );

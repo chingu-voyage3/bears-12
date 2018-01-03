@@ -45,12 +45,10 @@ export class OAuth extends Component {
   }
     
   loginGoog () {
-      let that = this;
       hello.login('google');
   }
 
   logoutGoog () {
-      let that = this;
       hello.logout('google');
   }
     
@@ -60,7 +58,7 @@ export class OAuth extends Component {
         {!this.state.loggedIn ? <button onClick={this.loginGoog}>G+</button> : <div></div>}
         {this.state.loggedIn ? <button onClick={this.logoutGoog}>logout</button> : <div></div>}
         {this.state.loggedIn ? <div id="pic_and_greet">
-            <img src={this.state.thumbnail}/>
+            <img src={this.state.thumbnail} alt="Profile Pic"/>
             {"Hey " + this.state.name}
         </div> : <div></div>}
       </div>
