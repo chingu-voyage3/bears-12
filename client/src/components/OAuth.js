@@ -10,7 +10,6 @@ export class OAuth extends Component {
           name: null,
           loggedIn: false
       }
-      console.log(OAuthKeys);
       const GOOGLE_CLIENT_ID = OAuthKeys.Google.ClientID
       
       hello.init({
@@ -26,14 +25,12 @@ export class OAuth extends Component {
       
       hello.on('auth.login', function(auth){
         google.api("me").then(function(r){
-            console.log("Successful login: ", r);
             that.setState({
                 thumbnail: r.thumbnail,
                 name: r.name,
                 loggedIn: true
             });
         }, function(e) {
-            console.log("Not successful yet");
             that.setState({askForLogin: true});
         }); 
       });
@@ -48,14 +45,11 @@ export class OAuth extends Component {
   }
     
   loginGoog () {
-      const google = hello.use('google');
-      console.log("Button Pressed");
       let that = this;
       hello.login('google');
   }
 
   logoutGoog () {
-      console.log("Button Pressed");
       let that = this;
       hello.logout('google');
   }
