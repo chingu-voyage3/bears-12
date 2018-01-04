@@ -31,3 +31,4 @@ npm-debug.log
 
 #Sensitive Environment Variables
 client/src/config/OAuthKeys.js
+.env
