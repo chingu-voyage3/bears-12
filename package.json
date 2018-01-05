@@ -8,15 +8,18 @@
     "server": "nodemon ./bin/www"
   },
   "dependencies": {
-    "body-parser": "~1.17.1",
+    "body-parser": "^1.17.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
+    "http": "0.0.0",
     "moment": "2.17.1",
-    "mongoose": "4.8.7",
+    "mongoose": "^4.8.7",
     "mongoose-mongodb-errors": "0.0.2",
     "morgan": "~1.8.1",
     "multer": "1.3.0",
+    "path": "^0.12.7",
+    "request": "^2.83.0",
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
