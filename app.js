@@ -1,14 +1,29 @@
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const axios = require('axios');
+
 require('dotenv').config();
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+const routes = require('./routes/index');
 
-var app = express();
+const app = express();
+
+const mongoose = require('mongoose');
+const users = require('./models/userModel.js');
+
+//Database connection and model loading
+
+const mongoDB = process.env.MONGO_URI;
+mongoose.connect(mongoDB);
+const db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'MongoDB connection error'));
+db.once('open',function(){
+	console.log('MongoDB database connected');
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
