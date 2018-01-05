@@ -3,7 +3,6 @@ const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const axios = require('axios');
 
 require('dotenv').config();
 
@@ -12,6 +11,9 @@ const routes = require('./routes/index');
 const app = express();
 
 const mongoose = require('mongoose');
+
+mongoose.Promise = require('bluebird');
+
 const users = require('./models/userModel.js');
 
 //Database connection and model loading
