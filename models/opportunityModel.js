@@ -16,7 +16,7 @@ const opportunitySchema = mongoose.Schema({
     // interestedUsers: Array
 });
 
-userSchema.methods.createNewOpportunity = function(title, description, contactInfo, location, image,
+opportunitySchema.methods.createNewOpportunity = function(title, description, contactInfo, location, image,
 		startDate, endDate, times, events, skills, interestedUsers){
 	var newEntry = new opportunityModel({
 	_id: new ObjectID(),
