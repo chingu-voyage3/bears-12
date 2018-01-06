@@ -15,6 +15,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
 const users = require('./models/userModel.js');
+const opportunity = require('./models/opportunityModel.js');
 
 //Database connection and model loading
 
@@ -26,6 +27,9 @@ db.on('error', console.error.bind(console, 'MongoDB connection error'));
 db.once('open',function(){
 	console.log('MongoDB database connected');
 });
+
+
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
