@@ -10,10 +10,12 @@ import OpportunityContainer from '../components/Opportunity';
 import ProfileContainer from '../container/ProfileContainer';
 import MyOpportunitiesContainer from '../container/MyOpportunitiesContainer';
 import ComposeOpportunitiesContainer from '../container/ComposeOpportunitiesContainer';
+import NavContainer from '../container/NavContainer';
 
 const getRoutes = (store) => (
   <Router>
     <App>
+    <NavContainer />
       <Switch>
         <Route exact={true} path='/' component={HomeContainer} />
         <Route path='/login' component={LoginContainer} />
