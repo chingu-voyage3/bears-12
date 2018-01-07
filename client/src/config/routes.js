@@ -22,8 +22,8 @@ const getRoutes = (store) => (
         <Route path='/join' component={JoinContainer} />
         <Route path='/search' component={SearchContainer} />
         <Route path='/profile/:userid' component={ProfileContainer} />
-        <Route exact={true} path='/opportunity/:opportunityid' component={OpportunityContainer}/>
-        <Route exact={true} path='/editopportunity/:opportunityid' component={ComposeOpportunitiesContainer} />
+        <Route path='/opportunity/:opportunityid' component={OpportunityContainer}/>
+        <Route path='/editopportunity/:opportunityid' component={ComposeOpportunitiesContainer} />
         <Route path='/announcement' component={AnnouncementContainer} />
         <Route path='/myopportunities' component={MyOpportunitiesContainer}/>
         <Route render={() => <Redirect to='/' />} />

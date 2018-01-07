@@ -1,24 +1,27 @@
+//Basic Express App
 const express = require('express');
+const app = express();
 const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-require('dotenv').config();
-
-const routes = require('./routes/index');
-
-const app = express();
-
-const mongoose = require('mongoose');
-
-mongoose.Promise = require('bluebird');
-
+//For database
 const users = require('./models/userModel.js');
 const opportunity = require('./models/opportunityModel.js');
+const mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
+
+//For passport OAuth
+const session      = require('express-session');
+var passport = require('passport');
+var flash    = require('connect-flash');
+
+//Environmental Variables
+require('dotenv').config();
+
 
 //Database connection and model loading
-
 const mongoDB = process.env.MONGO_URI;
 mongoose.connect(mongoDB);
 const db = mongoose.connection;
@@ -29,8 +32,6 @@ db.once('open',function(){
 });
 
 
-
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -38,7 +39,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use('/', routes);
+// Required for passport
+require('./routes/config/passport')(passport); // pass passport for configuration
+app.use(session({ secret: 'battery-cat-horse-couch' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+// routes ======================================================================
+const routes = require('./routes/index')(app, passport); // load our routes and pass in our app and fully configured passport
+//app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

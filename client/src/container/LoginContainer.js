@@ -16,12 +16,12 @@ export class LoginContainer extends Component { // eslint-disable-line react/pre
           <ul style={ {listStyle: 'none'} }>
             <li>
               <div style={buttonOutline}>
-                <span>Login with Facebook</span>
+                <a href="/auth/google" className="btn btn-danger"><span className="fa fa-google-plus">Login with Google</span></a>
               </div>
             </li>
             <li>
               <div style={buttonOutline}>
-                <span>Login with Linkedin</span>
+                <a href="/auth/linkedin" className="btn btn-danger"><span className="fa fa-linkedin">Login with Linkedin</span></a>
               </div>
             </li>
             <li>

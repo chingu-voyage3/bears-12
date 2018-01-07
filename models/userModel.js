@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 var ObjectID = require("mongodb").ObjectID;
+var bcrypt   = require('bcrypt-nodejs');
 
 const userSchema = mongoose.Schema({
-	_id: String,
-	 name: String,
+    _id: String,
+    name: String,
 	// image: String,
 	// bio: String,
 	// location: String,
@@ -14,7 +15,17 @@ const userSchema = mongoose.Schema({
 	// history: String
 });
 
-userSchema.methods.createNewUser = function(name,image,bio,location,rating,
+// generating a hash
+userSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+// checking if password is valid
+userSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.local.password);
+};
+
+userSchema.methods.createNewUser = function(ame,image,bio,location,rating,
 		email,pw,role,history){
 	var newEntry = new userModel({
 	_id: new ObjectID(),
