@@ -2,7 +2,10 @@
   "name": "projectChingu",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001",
+  "proxy": {
+      '^/auth/*': {
+        target: 'http://localhost:3001/',
+      },
   "devDependencies": {
     "hellojs": "^1.16.1",
     "react-scripts": "1.0.17"

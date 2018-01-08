@@ -6,7 +6,7 @@ var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var LinkedinStrategy = require('passport-linkedin-oauth2').Strategy;
 
 // load up the user model
-var UserCred            = require('../../models/userCred.js');
+var UserCred            = require('../models/userCred.js');
 
 // load the auth variables
 var configAuth = require('./auth');

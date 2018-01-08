@@ -15,11 +15,6 @@ const bodyParser   = require('body-parser');
 module.exports = function(app, passport) {
 
     // =====================================
-    // HOME PAGE ===========================
-    // =====================================
-    app.get('/', indexController.testApi);
-
-    // =====================================
     // LOGIN ===============================
     // =====================================
 
@@ -148,6 +143,11 @@ module.exports = function(app, passport) {
            res.redirect('/profile');
         });
     });
+    
+    // =====================================
+    // HOME PAGE ===========================
+    // =====================================
+    app.get('/', indexController.testApi);
 };
 
 // route middleware to make sure a user is logged in
