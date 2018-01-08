@@ -40,7 +40,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Required for passport
-require('./routes/config/passport')(passport); // pass passport for configuration
+require('./config/passport')(passport); // pass passport for configuration
 app.use(session({ secret: 'battery-cat-horse-couch' })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
