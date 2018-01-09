@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import OpportunitesContainer from './OpportunitiesContainer';
-import OAuth from '../components/OAuth.js';
 
 const HomeContainer = () => (
   <div>
-    <OAuth/>
     <div>
       <h1>Give Yourself, Make a Difference</h1>
       <Link to='/search'>Search Volunteer Opportunites</Link>

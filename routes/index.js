@@ -20,7 +20,7 @@ module.exports = function(app, passport) {
 
     // process the login form
     app.post('/login', passport.authenticate('local-login', {
-        successRedirect : '/profile', // redirect to the secure profile section
+        successRedirect : '/', // redirect to the secure profile section
         failureRedirect : '/login', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
@@ -31,10 +31,25 @@ module.exports = function(app, passport) {
     
     // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect : '/profile', // redirect to the secure profile section
+        successRedirect : '/', // redirect to the secure profile section
         failureRedirect : '/signup', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
+    
+    // =====================================
+    // FACEBOOK ROUTES =====================
+    // =====================================
+    // route for facebook authentication and login
+    app.get('/auth/facebook', passport.authenticate('facebook', { 
+      scope : ['emails']
+    }));
+
+    // handle the callback after facebook has authenticated the user
+    app.get('/auth/facebook/callback',
+        passport.authenticate('facebook', {
+            successRedirect : '/',
+            failureRedirect : '/'
+        }));
     
     // =====================================
     // GOOGLE ROUTES =======================
@@ -47,7 +62,7 @@ module.exports = function(app, passport) {
     // the callback after google has authenticated the user
     app.get('/auth/google/callback',
             passport.authenticate('google', {
-                    successRedirect : '/profile',
+                    successRedirect : '/',
                     failureRedirect : '/'
             }));
     
@@ -62,7 +77,7 @@ module.exports = function(app, passport) {
     // the callback after google has authenticated the user
     app.get('/auth/linkedin/callback',
             passport.authenticate('linkedin', {
-                    successRedirect : '/profile',
+                    successRedirect : '/',
                     failureRedirect : '/'
             }));
 
@@ -80,10 +95,24 @@ module.exports = function(app, passport) {
 
     // locally --------------------------------
         app.post('/connect/local', passport.authenticate('local-signup', {
-            successRedirect : '/profile', // redirect to the secure profile section
+            successRedirect : '/', // redirect to the secure profile section
             failureRedirect : '/connect/local', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
+    
+    // facebook -------------------------------
+
+        // send to facebook to do the authentication
+        app.get('/connect/facebook', passport.authorize('facebook', { 
+          scope : ['emails'] 
+        }));
+
+        // handle the callback after facebook has authorized the user
+        app.get('/connect/facebook/callback',
+            passport.authorize('facebook', {
+                successRedirect : '/profile',
+                failureRedirect : '/'
+            }));
     
     // google ---------------------------------
 
@@ -93,7 +122,7 @@ module.exports = function(app, passport) {
         // the callback after google has authorized the user
         app.get('/connect/google/callback',
             passport.authorize('google', {
-                successRedirect : '/profile',
+                successRedirect : '/',
                 failureRedirect : '/'
             }));
     
@@ -105,7 +134,7 @@ module.exports = function(app, passport) {
         // the callback after google has authorized the user
         app.get('/connect/linkedin/callback',
             passport.authorize('linkedin', {
-                successRedirect : '/profile',
+                successRedirect : '/',
                 failureRedirect : '/'
             }));
     
@@ -121,6 +150,15 @@ module.exports = function(app, passport) {
         var user            = req.user;
         user.local.email    = undefined;
         user.local.password = undefined;
+        user.save(function(err) {
+            res.redirect('/profile');
+        });
+    });
+    
+    // facebook -------------------------------
+    app.get('/unlink/facebook', function(req, res) {
+        var user            = req.user;
+        user.facebook.token = undefined;
         user.save(function(err) {
             res.redirect('/profile');
         });
