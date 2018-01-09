@@ -61,6 +61,7 @@ const routes = require('./routes/index')(app, passport); // load our routes and 
 
 // error handler
 app.use(function(err, req, res, next) {
+	console.error(err);
   res.status(err.status || 500).send({error: err.message});
 });
 
