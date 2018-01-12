@@ -1,5 +1,5 @@
 import React from 'react'
-import image from '../img/original.png'
+import image from '../img/download.jpeg'
 
 
 const VolunteerProfile = (props) => {

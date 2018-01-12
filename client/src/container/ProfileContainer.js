@@ -25,11 +25,11 @@ export class ProfileContainer extends Component { // eslint-disable-line react/p
     let profile = null;
     if( mockData.userType === 'Non-Profit'){
       profile = 
-          <NonprofitProfile mockData[0] />
+          <NonprofitProfile data={mockData[0]} />
 
     } else {
       profile =
-          <UserProfile mockData[1] />
+          <UserProfile data={mockData[1]} />
     }
 
     return (
