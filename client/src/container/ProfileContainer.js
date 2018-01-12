@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Profile from "../components/Profile.js";
-import CalendarContainer from "../container/CalendarContainer.js";
-import NonprofitUserContainer from "./NonprofitUserContainer";
+import Profile  from "../components/Profile";
+
 /**
  * ProfileContainer
  */
@@ -18,30 +17,9 @@ export class ProfileContainer extends Component { // eslint-disable-line react/p
       },
       userid: 1
     };
-    let profile = null;
-    if( mockData.userType === 'Non-Profit'){
-      profile = 
-      <div>
-          <NonprofitUserContainer />
-          <CalendarContainer/>  
-      </div>
-
-    } else {
-      profile =
-      <div>
-        {
-          mockData.map((data, idx) => {
-            return <Profile key={idx} data={data} />
-          })
-        }
-         
-      </div>
-    }
 
     return (
-      <div>
-      {profile}
-      </div>
+      <Profile data={ mockData }/>
     );
   }
 }
