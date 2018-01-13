@@ -5,6 +5,17 @@ import UserProfile from "../components/VolunteerProfile";
  * ProfileContainer
  */
 export class ProfileContainer extends Component { // eslint-disable-line react/prefer-stateless-function
+  state = {
+    np : false
+  }
+
+  switchUser(){
+    this.setState({
+      np: !this.state.np
+    })
+  }
+
+
   render() {
     const mockData = [{
       name: 'Hotdog Fingers Society',
@@ -15,15 +26,17 @@ export class ProfileContainer extends Component { // eslint-disable-line react/p
         lat: 0,
         long: 0
       },
+      image: 'download.jpeg',
       userid: 1
     },
     {
       name: 'Alex',
       userType: 'Volunteer',
-      bio: 'Meditationg and Programming champion'
+      image: 'original.png',
+      bio: 'Meditating and Programming champion'
     }];
     let profile = null;
-    if( mockData.userType === 'Non-Profit'){
+    if( this.state.np ){
       profile = 
           <NonprofitProfile data={mockData[0]} />
 
@@ -35,6 +48,7 @@ export class ProfileContainer extends Component { // eslint-disable-line react/p
     return (
       <div>
       {profile}
+      <button onClick={()=> this.switchUser()}> Switch User Type </button>
       </div>
     );
   }

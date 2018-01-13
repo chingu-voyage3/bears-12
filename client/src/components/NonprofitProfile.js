@@ -1,11 +1,13 @@
 import React from 'react'
 /* import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'; Commented out until used to remove error messages */
-import image from '../img/download.jpeg'
+
 import CalendarContainer from "../container/CalendarContainer.js";
 
 
 const NonprofitProfile = (props) => {
+
+  const image = require(`../img/${props.data.image}`) 
   return (
     <div style={ {border: 'solid 1px black'}}>
       <img src={image} alt=""/>
