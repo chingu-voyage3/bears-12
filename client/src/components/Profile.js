@@ -1,6 +1,6 @@
 import React from 'react'
-/* import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'; Commented out until used to remove error messages */
+import { Link } from 'react-router-dom'; 
+import CalendarContainer from "../container/CalendarContainer";
 import image from '../img/download.jpeg'
 
 const Profile = (props) => {
@@ -10,6 +10,9 @@ const Profile = (props) => {
       <h3>{props.data.name}</h3>
       <span style={ { display: 'block'} }>AT {props.data.location.address} </span>
       <p>{props.data.description}</p>
+      {
+        props.data.userType === 'Non-Profit' ? <CalendarContainer /> : null
+      }
     </div>
   )
 }
