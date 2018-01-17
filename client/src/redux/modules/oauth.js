@@ -19,7 +19,13 @@ export function navigateTo(URL) {
     };
 }
 
-export default function loggedInReducer(state, action) {
+const initialState = {
+    loggedIn: false,
+    navigateTo: null,
+    redirectUrl: null
+};
+
+export default function loggedInReducer(state = initialState, action) {
     switch (action.type) {
         case 'TOGGLE_LOGGED_IN':
             return Object.assign({}, state, {
