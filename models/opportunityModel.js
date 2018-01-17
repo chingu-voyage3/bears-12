@@ -6,7 +6,6 @@ const validator = require('mongoose-validators');
 // var ObjectID = require("mongodb").ObjectID;
 
 const opportunitySchema = mongoose.Schema({
-	_id: new Schema.Types.ObjectId,
 	 title: {
 		type: String,
 		unique: true,
