@@ -11,6 +11,7 @@ import ProfileContainer from '../container/ProfileContainer';
 import MyOpportunitiesContainer from '../container/MyOpportunitiesContainer';
 import ComposeOpportunitiesContainer from '../container/ComposeOpportunitiesContainer';
 import NavContainer from '../container/NavContainer';
+import EnsureLoggedInContainer from "../container/EnsureLoggedInContainer.js";
 
 const getRoutes = (store) => (
   <Router>
@@ -23,9 +24,11 @@ const getRoutes = (store) => (
             <Route path='/search' component={SearchContainer} />
             <Route path='/profile/:userid' component={ProfileContainer} />
             <Route path='/opportunity/:opportunityid' component={OpportunityContainer}/>
-            <Route path='/editopportunity/:opportunityid' component={ComposeOpportunitiesContainer} />
-            <Route path='/announcement' component={AnnouncementContainer} />
-            <Route path='/myopportunities' component={MyOpportunitiesContainer}/>
+            <Route component={EnsureLoggedInContainer}>
+                <Route path='/editopportunity/:opportunityid' component={ComposeOpportunitiesContainer} />
+                <Route path='/announcement' component={AnnouncementContainer} />
+                <Route path='/myopportunities' component={MyOpportunitiesContainer}/>
+            </Route>
         </Switch>
     </App>
   </Router>

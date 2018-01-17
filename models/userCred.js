@@ -16,6 +16,11 @@ var userCredSchema = mongoose.Schema({
         email        : String,
         name         : String,
     },
+    twitter          : {
+        id           : String,
+        token        : String,
+        name         : String,
+    },
     google           : {
         id           : String,
         token        : String,
