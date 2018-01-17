@@ -1,11 +1,11 @@
 //Express stuff
 const express = require('express');
+const router = express.Router();
 const errorHandler = require('../handlers/errorHandlers');
 const indexController = require('../controllers/indexController');
-var router = express.Router();
+const opportunityController = require('../controllers/opportunityController');
 
 //For OAuth
-const passport = require('passport');
 const flash    = require('connect-flash');
 const cookieParser = require('cookie-parser');
 const bodyParser   = require('body-parser');
@@ -13,7 +13,10 @@ const bodyParser   = require('body-parser');
 
 // routes/index.js contains non-auth routes
 
-router.get('/', indexController.testApi);
+router.get('/fish', indexController.testApi);
+router.post('/op', opportunityController.createOpportunity);
+
+
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {

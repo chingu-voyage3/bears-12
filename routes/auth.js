@@ -1,7 +1,6 @@
 //Express stuff
 const express = require('express');
 const errorHandler = require('../handlers/errorHandlers');
-const indexController = require('../controllers/indexController');
 var router = express.Router();
 
 //For OAuth
@@ -181,11 +180,6 @@ module.exports = function(app, passport) {
            res.redirect('/profile');
         });
     });
-    
-    // =====================================
-    // HOME PAGE ===========================
-    // =====================================
-    app.get('/', indexController.testApi);
 };
 
 // route middleware to make sure a user is logged in
