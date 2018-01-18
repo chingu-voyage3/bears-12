@@ -13,8 +13,17 @@ const bodyParser   = require('body-parser');
 
 // routes/index.js contains non-auth routes
 
-router.get('/fish', indexController.testApi);
-router.post('/op', opportunityController.createOpportunity);
+// =====================================
+// SAMPLE ROUTE ========================
+// =====================================
+
+router.get('/', indexController.testApi);
+
+// =====================================
+// OPPORTUNITY ROUTES ==================
+// =====================================
+
+router.post('/opportunity/create', opportunityController.createOpportunity);
 
 
 
