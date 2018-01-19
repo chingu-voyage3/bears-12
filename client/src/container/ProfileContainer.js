@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import NonprofitProfile from "../components/NonprofitProfile";
 import UserProfile from "../components/VolunteerProfile";
+
+
 /**
  * ProfileContainer
  */
 export class ProfileContainer extends Component { // eslint-disable-line react/prefer-stateless-function
   state = {
-    np : false
+    np : true
   }
 
   switchUser(){

@@ -11,13 +11,12 @@ const mongoose = require('mongoose');
 const mongodbErrorHandler = require('mongoose-mongodb-errors');
 mongoose.plugin(mongodbErrorHandler);
 mongoose.Promise = require('bluebird');
-const users = require('./models/userModel.js');
-const opportunity = require('./models/opportunityModel.js');
 
 //For passport OAuth
 const session      = require('express-session');
 var passport = require('passport');
 var flash    = require('connect-flash');
+const port = process.env.PORT || 5000;
 
 //Environmental Variables
 require('dotenv').config();
@@ -41,6 +40,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+//dealing with cross domains
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 // Required for passport
 require('./config/passport')(passport); // pass passport for configuration
 app.use(session({ secret: 'battery-cat-horse-couch' })); // session secret
@@ -54,6 +60,7 @@ const auth = require('./routes/auth')(app, passport); // load our routes and pas
 const routes = require('./routes/index');
 app.use('/', routes);
 
+
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
 //   var err = new Error('Not Found');
@@ -66,5 +73,7 @@ app.use(function(err, req, res, next) {
 	console.error(err);
   res.status(err.status || 500).send({error: err.message});
 });
+
+app.listen(port, () => console.log(`Listening on port ${port}`));
 
 module.exports = app;

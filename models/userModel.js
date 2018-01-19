@@ -5,7 +5,10 @@ var bcrypt   = require('bcrypt-nodejs');
 const userSchema = mongoose.Schema({
     _id: String,
     name: String,
-	// image: String,
+    userType: String,
+    description: String,
+    location: Object,
+    image: String
 	// bio: String,
 	// location: String,
 	// rating: Number,
@@ -25,12 +28,14 @@ userSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.local.password);
 };
 
-userSchema.methods.createNewUser = function(ame,image,bio,location,rating,
-		email,pw,role,history){
+userSchema.methods.createNewUser = function(name, usertype,description,location, image){
 	var newEntry = new userModel({
 	_id: new ObjectID(),
 	name: name,
-	// image: image,
+	usertype: usertype,
+	description: description,
+	location: location,
+    image: image
 	// bio: bio,
 	// location: location,
 	// rating: rating,
