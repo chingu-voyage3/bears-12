@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 /**
  * ComposeMessagesContainer
@@ -10,18 +11,30 @@ export class ComposeOpportunitiesContainer extends Component { // eslint-disable
       name: '',
       location: '',
       startTime: '',
+      startDate: '',
       endTime: '',
+      endDate: '',
       details: ''
     }
   }
 
   handleChange(e) {
-    let state = this.state;
+    const state = this.state;
     for (var prop in state) {
       if(prop === e.target.id) {
         state[e.target.id] = e.target.value
         this.setState(state);
       }
+    }
+  }
+
+  santizeDate(e) {
+    const dateString = e.target.value;
+    
+    if(moment(dateString).isValid()) {
+      console.log(true);
+    } else {
+      console.log(false)
     }
   }
 
@@ -35,10 +48,16 @@ export class ComposeOpportunitiesContainer extends Component { // eslint-disable
           <label htmlFor="location">Location</label>
           <input type="text" name="location" id="location" placeholder="123 Muffin Ln." onChange={this.handleChange.bind(this)}/>
           <div>
-            <label htmlFor="startTime">Starting Time</label>
-            <input type="text" name="startTime" id="startTime" onChange={this.handleChange.bind(this)}/>
+            <label htmlFor="startDate">Start Date</label>
+            <div>
+              <input type="text" id="startDate" onBlur={this.santizeDate.bind(this)} />
+              <input type="text" id="startTime" onBlur={this.santizeDate.bind(this)} />
+            </div>
             <label htmlFor="endTime">Ending Time</label>
-            <input type="text" name="endTime" id="endDate" onChange={this.handleChange.bind(this)}/>
+            <div>
+              <input type="text" id="endDate" onBlur={this.handleChange.bind(this)} />
+              <input type="text" id="endTime" onBlur={this.handleChange.bind(this)} />
+            </div>
           </div>
           <label htmlFor="details">Description</label>
           <textarea name="details" id="details" cols="30" rows="10"  onChange={this.handleChange.bind(this)}/>
