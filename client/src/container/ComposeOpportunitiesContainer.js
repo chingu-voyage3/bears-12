@@ -10,10 +10,10 @@ export class ComposeOpportunitiesContainer extends Component { // eslint-disable
     this.state = {
       name: '',
       location: '',
-      startTime: '',
-      startDate: '',
-      endTime: '',
-      endDate: '',
+      startTime: moment().format('hh:mm a'),
+      startDate: moment().format('MM/DD/YYYY'),
+      endTime: moment().format('hh:mm a'),
+      endDate: moment().format('MM/DD/YYYY'),
       details: ''
     }
   }
@@ -29,17 +29,30 @@ export class ComposeOpportunitiesContainer extends Component { // eslint-disable
   }
 
   santizeDate(e) {
+    const currentDate = moment();
     const dateString = e.target.value;
-    
-    if(moment(dateString).isValid()) {
-      console.log(true);
+    const state = this.state;
+
+
+    if(moment(dateString, 'MM/DD/YYYY', true).isValid() || moment(dateString, 'hh:mm a', true).isValid()) {
+      state[e.target.id] = dateString;
+      this.setState(state);
+      return;
+    } 
+
+    if(e.target.id === 'endTime' || e.target.id === 'startTime') {
+      state[e.target.id] = currentDate.format('hh:mm a');
+      this.setState(state);
+      
+      return;
     } else {
-      console.log(false)
+      state[e.target.id] = currentDate.format('MM/DD/YYYY');
+      this.setState(state);
+      return;
     }
   }
 
   render() {
-    console.log(this.state)
     return (
       <div>
         <form>
@@ -50,13 +63,29 @@ export class ComposeOpportunitiesContainer extends Component { // eslint-disable
           <div>
             <label htmlFor="startDate">Start Date</label>
             <div>
-              <input type="text" id="startDate" onBlur={this.santizeDate.bind(this)} />
-              <input type="text" id="startTime" onBlur={this.santizeDate.bind(this)} />
+              <input type="text" 
+                     id="startDate" 
+                     value={this.state.startDate} 
+                     onBlur={this.santizeDate.bind(this)} 
+                     onChange={this.handleChange.bind(this)} />
+              <input type="text" 
+                     id="startTime" 
+                     value={this.state.startTime} 
+                     onBlur={this.santizeDate.bind(this)} 
+                     onChange={this.handleChange.bind(this)}/>
             </div>
             <label htmlFor="endTime">Ending Time</label>
             <div>
-              <input type="text" id="endDate" onBlur={this.handleChange.bind(this)} />
-              <input type="text" id="endTime" onBlur={this.handleChange.bind(this)} />
+              <input type="text" 
+                     id="endDate" 
+                     value={this.state.endDate} 
+                     onBlur={this.santizeDate.bind(this)} 
+                     onChange={this.handleChange.bind(this)} />
+              <input type="text" 
+                     id="endTime" 
+                     value={this.state.endTime} 
+                     onBlur={this.santizeDate.bind(this)} 
+                     onChange={this.handleChange.bind(this)}/>
             </div>
           </div>
           <label htmlFor="details">Description</label>
