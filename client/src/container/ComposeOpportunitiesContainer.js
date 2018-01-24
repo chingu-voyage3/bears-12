@@ -40,15 +40,20 @@ export class ComposeOpportunitiesContainer extends Component { // eslint-disable
     };
 
     if(errorsLength.length === 0) {
-      
-      console.log('No validation errors time to send it off to the server!');
 
       fetch(url, options)
         .then((res) => {
+          if(!res.ok) {
+            throw Error(res.statusText)
+          }
           return res.json();
         })
         .then((success)=> {
-          this.setState({ redirect: true });
+          
+          this.setState({ redirect: true, errors: {} });
+        })
+        .catch((err) => {
+          this.setState({ errors: {serverError: 'The server blew a casket. What have you done?'}});
         })
     } else {
       this.setState({ errors: errorsObj });
@@ -122,9 +127,10 @@ export class ComposeOpportunitiesContainer extends Component { // eslint-disable
 
   render() {
     const errors = this.state.errors;
- 
     return (
       <div>
+        {this.state.redirect ? <div>The opportunity was saved!</div> : null }
+        <div>{errors.serverError}</div>
         <form>
           { errors.titleEmpty ? <div className="error-label">{errors.titleEmpty}</div> : null } 
           <label htmlFor="name">Name of Event</label>
