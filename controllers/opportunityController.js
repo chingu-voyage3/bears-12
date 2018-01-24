@@ -15,8 +15,8 @@ exports.createOpportunity = async (req, res, next) => {
     };
 
     
-    opportunity.startDate = opportunity.startDate.getTime() / 1000;
-    opportunity.endDate = opportunity.endDate.getTime() / 1000;
+    opportunity.startDate = Math.floor(opportunity.startDate.getTime() / 1000);
+    opportunity.endDate = Math.floor(opportunity.endDate.getTime() / 1000);
     
     if(opportunity.startDate >= opportunity.endDate) {
         
