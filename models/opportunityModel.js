@@ -27,12 +27,12 @@ const opportunitySchema = mongoose.Schema({
 		type: Number,
 		required: true,
 	},
-    skillsRequired: [String],
+    // skillsRequired: [String],
     // interestedUsers: [Schema.Types.ObjectId]
 });
 
 opportunitySchema.methods.createNewOpportunity = function(title, description, location,
-		startDate, endDate, skills, /* interestedUsers */) {
+		startDate, endDate, /*skills, interestedUsers */) {
 	var newEntry = new Opportunity({
 	_id: new ObjectID(),
     title: title,
@@ -40,7 +40,7 @@ opportunitySchema.methods.createNewOpportunity = function(title, description, lo
 	location: location,
 	startDate: startDate,
     endDate: endDate,
-    skillsRequired: skills,
+    // skillsRequired: skills,
     // interestedUsers: interestedUsers
 	});
 

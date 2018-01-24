@@ -8,22 +8,29 @@ export class ComposeOpportunitiesContainer extends Component { // eslint-disable
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
+      title: '',
       location: '',
       startTime: moment().format('hh:mm a'),
       startDate: moment().format('MM/DD/YYYY'),
       endTime: moment().format('hh:mm a'),
       endDate: moment().format('MM/DD/YYYY'),
       description: '',
-      errors: {}
+      requiredSkills: '',
+      redirect: false,
+      errors: {},
     }
   }
 
   postOpportunity(errorsObj) {
 
+    const state = this.state;
     const errorsLength = Object.keys(errorsObj);
     const url = '/opportunity/create';
-    const jsonData = this.state;
+    const jsonData = Object.assign({}, state);;
+
+    jsonData.startDate = new Date(`${this.state.startDate} ${this.state.startTime}`);
+    jsonData.endDate = new Date(`${this.state.endDate} ${this.state.endTime}`);
+
     let options = {
       method: 'POST',
       body: JSON.stringify(jsonData),
@@ -32,14 +39,17 @@ export class ComposeOpportunitiesContainer extends Component { // eslint-disable
       })
     };
 
-    console.log(errorsLength);
-
     if(errorsLength.length === 0) {
       
       console.log('No validation errors time to send it off to the server!');
 
-      //fetch(url, options)
-      // .then()
+      fetch(url, options)
+        .then((res) => {
+          return res.json();
+        })
+        .then((success)=> {
+          this.setState({ redirect: true });
+        })
     } else {
       this.setState({ errors: errorsObj });
     }
@@ -52,7 +62,7 @@ export class ComposeOpportunitiesContainer extends Component { // eslint-disable
     const endDate = new Date(`${this.state.endDate} ${this.state.endTime}`);
     const currentDate = new Date();
   
-    if(state.name.length <= 5) {
+    if(state.title.length <= 5) {
     errors = Object.assign({ titleEmpty: 'Title of event must be atleast 5 characters long' }, errors)
     }
 
@@ -112,13 +122,13 @@ export class ComposeOpportunitiesContainer extends Component { // eslint-disable
 
   render() {
     const errors = this.state.errors;
-    console.log(this.state.errors)
+ 
     return (
       <div>
         <form>
           { errors.titleEmpty ? <div className="error-label">{errors.titleEmpty}</div> : null } 
           <label htmlFor="name">Name of Event</label>
-          <input type="text" name="name" id="name" onChange={this.handleChange.bind(this)} />
+          <input type="text" name="name" id="title" onChange={this.handleChange.bind(this)} />
           { errors.locationEmpty ? <div className="error-label">{errors.titleEmpty}</div> : null}
           <label htmlFor="location">Location</label>
           <input type="text" name="location" id="location" placeholder="123 Muffin Ln." onChange={this.handleChange.bind(this)}/>
