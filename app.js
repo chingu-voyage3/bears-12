@@ -8,8 +8,6 @@ const bodyParser = require('body-parser');
 
 //For database
 const mongoose = require('mongoose');
-const mongodbErrorHandler = require('mongoose-mongodb-errors');
-mongoose.plugin(mongodbErrorHandler);
 mongoose.Promise = require('bluebird');
 const users = require('./models/userModel.js');
 const opportunity = require('./models/opportunityModel.js');
@@ -54,17 +52,17 @@ const auth = require('./routes/auth')(app, passport); // load our routes and pas
 const routes = require('./routes/index');
 app.use('/', routes);
 
-// catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   var err = new Error('Not Found');
-//   err.status = 404;
-//   next(err);
-// });
+//catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
 
 // error handler
 app.use(function(err, req, res, next) {
 	console.error(err);
-  res.status(err.status || 500).send({error: err.message});
+  res.status(err.status || 500).send({ status: err.status, error: err.message});
 });
 
 module.exports = app;

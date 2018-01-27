@@ -1,3 +1,3 @@
 exports.testApi = (req, res) => {
-    res.json({ hello: 'World' });
+    res.send({ hello: 'World' });
 }
